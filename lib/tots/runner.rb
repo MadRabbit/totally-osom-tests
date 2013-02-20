@@ -18,19 +18,17 @@ class TOTS::Runner
       tests.each do |suite|
         printer.testing suite
 
-        test = suite.new
-        test.public_methods.each do |name|
-          if name.slice(0, 4) == 'test'
+        caze = suite.new
+        suite.tests.each do |test|
+          printer.running test[:name]
 
-            printer.running name
+          begin
+            caze.run(test)
 
-            begin
-              test.__send__(name)
-              printer.passed
+            printer.passed
 
-            rescue TOTS::Fail => e
-              printer.failed e
-            end
+          rescue TOTS::Fail => e
+            printer.failed e
           end
         end
       end

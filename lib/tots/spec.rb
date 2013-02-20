@@ -5,6 +5,11 @@
 #
 class TOTS::Spec
 
+  # the tests stash
+  def self.tests
+    @tests ||= []
+  end
+
   #
   # The basic `it` thingy
   #
@@ -19,13 +24,11 @@ class TOTS::Spec
     if args.size == 0
       self
     else
-      options = args.size > 1 && args.last.is_a?(Hash) ? args.last : {}
-
-      define_method "test #{args[0]}" do
-        @options = options
-
-        instance_eval &block
-      end
+      tests << {
+        name:    args[0],
+        options: args.size > 1 && args.last.is_a?(Hash) ? args.last : {},
+        block:   block
+      }
     end
   end
 
@@ -59,6 +62,16 @@ class TOTS::Spec
   #
   def options
     @options || {}
+  end
+
+  #
+  # Runs the test (called from the runner)
+  #
+  def run(test)
+    instance_eval do
+      @options = test[:options]
+      instance_eval &test[:block]
+    end
   end
 
 end
