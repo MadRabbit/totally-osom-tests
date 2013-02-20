@@ -7,5 +7,4 @@ module TOTS
   VERSION = '0.0.0'
 end
 
-
 require_relative './tots/spec'

@@ -8,8 +8,39 @@ require 'test/unit'
 class TOTS::Spec < Test::Unit::TestCase
 
   class << self
-    def it(desc=nil, &block)
-      define_method "test #{desc}", &block
+    #
+    # The basic `it` thingy
+    #
+    # ```ruby
+    # describe Smth do
+    #   it "must do stuff" do
+    #   end
+    # end
+    # ```
+    #
+    def it(*args, &block)
+      if args.size == 0
+        self
+      else
+        define_method "test #{args[0]}", &block
+      end
+    end
+
+    #
+    # Quick, skip marking
+    #
+    # ```ruby
+    # describe Smth do
+    #   it.skip "this test" do
+    #     this_code.will_be(:skipped)
+    #   end
+    # end
+    # ```
+    #
+    def skip(*args, &block)
+      define_method "test #{args[0]}" do
+        skip
+      end
     end
   end
 
