@@ -3,9 +3,7 @@
 #
 # Copyright (C) 2013 Nikolay Nemshilov
 #
-require 'test/unit'
-
-class TOTS::Spec < Test::Unit::TestCase
+class TOTS::Spec
 
   #
   # The basic `it` thingy
@@ -70,6 +68,6 @@ end
 #
 module Kernel
   def describe(*args, &block)
-    Class.new TOTS::Spec, &block
+    TOTS::Runner << Class.new(TOTS::Spec, &block)
   end
 end

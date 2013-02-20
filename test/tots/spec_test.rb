@@ -1,10 +1,6 @@
 require 'test_helper'
 
 describe TOTS::Spec do
-  it "must be a subclass of Test::Unit::TestCase" do
-    assert TOTS::Spec < MiniTest::Unit::TestCase
-  end
-
   def skip # replacing the current skip
     @__skip_called
   end
