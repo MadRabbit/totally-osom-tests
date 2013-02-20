@@ -2,7 +2,8 @@
 # The `must` thingy
 #
 class TOTS::Matcher
-  def initialize(*args)
+  def initialize(object, *args)
+    @object = object
   end
 end
 
