@@ -5,8 +5,12 @@ describe TOTS::Spec do
     assert TOTS::Spec < MiniTest::Unit::TestCase
   end
 
+  def skip # replacing the current skip
+    @__skip_called
+  end
+
   it.skip "must be skipped" do
-    throw "Oh, it didn't work..."
+    assert @__skip_called
   end
 
   it "must allow to specify options", some: 'options' do
