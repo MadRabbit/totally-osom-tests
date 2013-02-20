@@ -12,6 +12,8 @@ require_relative './tots/spec'
 require_relative './tots/assert'
 require_relative './tots/matcher'
 require_relative './tots/matcher/awesome'
+require_relative './tots/printer'
+require_relative './tots/printer/dots'
 require_relative './tots/runner'
 
 TOTS::Runner.start

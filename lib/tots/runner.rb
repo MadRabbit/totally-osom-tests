@@ -13,14 +13,29 @@ class TOTS::Runner
 
   def self.start
     at_exit {
-      tests.each do |desc|
-        test = desc.new
+      printer = Printer::Dots.new
+
+      tests.each do |suite|
+        printer.testing suite
+
+        test = suite.new
         test.public_methods.each do |name|
           if name.slice(0, 4) == 'test'
-            test.__send__(name)
+
+            printer.running name
+
+            begin
+              test.__send__(name)
+              printer.passed
+
+            rescue TOTS::Fail => e
+              printer.failed e
+            end
           end
         end
       end
+
+      printer.finish
     }
   end
 
