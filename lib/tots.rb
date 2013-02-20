@@ -8,3 +8,4 @@ module TOTS
 end
 
 require_relative './tots/spec'
+require_relative './tots/matcher'
