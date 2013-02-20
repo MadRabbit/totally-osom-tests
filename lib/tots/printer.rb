@@ -2,6 +2,13 @@
 # Generic printer
 #
 class Printer
+  RED     = '1'
+  GREEN   = '2'
+  YELLOW  = '3'
+  VIOLET  = '4'
+  MARGETA = '5'
+  BLUE    = '6'
+  GREY    = '7;2'
 
   def initialize
     @suites_count = 0
@@ -27,6 +34,14 @@ class Printer
 
   def summary
     raise "Should be implemented in a subclass"
+  end
+
+  def paint(string, color)
+    "\e[3#{color}m#{string}\e[0m"
+  end
+
+  def highlight(string, color)
+    "\e[4#{color}m#{string}\e[0m"
   end
 
   def testing(suite)
