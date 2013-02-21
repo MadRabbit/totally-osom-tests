@@ -73,4 +73,13 @@ class Printer
     summary
   end
 
+  def watching(on)
+    if on
+      puts "\n"
+      puts "Watching..."
+    else
+      puts "\n"
+
+    end
+  end
 end
