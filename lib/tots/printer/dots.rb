@@ -25,6 +25,6 @@ class Printer::Dots < Printer
       print paint(" ✖ Doh...", RED)
     end
 
-    print paint("Tests: #{@tests_count} Passed: #{@pass_count} Failed: #{@fail_count} Errored: #{@error_count}\n", GREY)
+    print paint("#{@tests_count} Tests, #{@pass_count} Passed, #{@fail_count} Failed, #{@error_count} Errored\n", GREY)
   end
 end
