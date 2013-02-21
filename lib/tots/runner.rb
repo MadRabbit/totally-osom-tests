@@ -20,7 +20,7 @@ class TOTS::Runner
 
         caze = suite.new
         suite.tests.each do |test|
-          printer.running test[:name]
+          printer.running test.name
 
           begin
             caze.run(test)

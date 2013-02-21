@@ -8,6 +8,7 @@ module TOTS
 end
 
 require_relative './tots/fail'
+require_relative './tots/test'
 require_relative './tots/spec'
 require_relative './tots/assert'
 require_relative './tots/matcher'

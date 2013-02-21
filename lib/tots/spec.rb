@@ -20,15 +20,11 @@ class TOTS::Spec
   # end
   # ```
   #
-  def self.it(*args, &block)
+  def self.it(*args)
     if args.size == 0
       self
     else
-      tests << {
-        name:    args[0],
-        options: args.size > 1 && args.last.is_a?(Hash) ? args.last : {},
-        block:   block
-      }
+      tests << TOTS::Test.new(args)
     end
   end
 
@@ -44,9 +40,7 @@ class TOTS::Spec
   # ```
   #
   def self.skip(*args, &block)
-    define_method "test #{args[0]}" do
-      skip
-    end
+    tests << TOTS::Test.new(args) # skipping the block
   end
 
   #
@@ -68,10 +62,7 @@ class TOTS::Spec
   # Runs the test (called from the runner)
   #
   def run(test)
-    instance_eval do
-      @options = test[:options]
-      instance_eval &test[:block]
-    end
+    test.run(self)
   end
 
 end
