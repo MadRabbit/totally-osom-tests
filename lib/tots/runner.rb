@@ -12,32 +12,53 @@ class TOTS::Runner
   end
 
   def self.start
-    at_exit {
-      printer = Printer::Dots.new
+    printer = Printer::Dots.new
 
-      tests.each do |suite|
-        printer.testing suite
+    tests.each do |suite|
+      printer.testing suite
 
-        caze = suite.new
-        suite.tests.each do |test|
-          printer.running test.name
+      caze = suite.new
+      suite.tests.each do |test|
+        printer.running test.name
 
-          begin
-            caze.run(test)
+        begin
+          caze.run(test)
 
-            printer.passed
+          printer.passed
 
-          rescue TOTS::Fail => e
-            printer.failed e
-          end
+        rescue TOTS::Fail => e
+          printer.failed e
         end
       end
+    end
 
-      printer.finish
-    }
+    printer.finish
+
+    watch
   end
 
-  def self.watch(paths)
-    throw "Not ready yet"
+  def self.watch(paths=nil)
+    @paths = paths if paths
+
+    if !paths && @paths
+      puts "\nWatching\n"
+    end
+
+    if !paths && @paths && !@watching
+      @watching = true
+
+      require 'rb-fsevent'
+
+      runner  = self
+
+      fsevent = FSEvent.new
+      fsevent.watch Dir.pwd do |directories|
+        puts "Detected change inside: #{directories.inspect}"
+
+        runner.start
+      end
+      fsevent.run
+    end
+
   end
 end

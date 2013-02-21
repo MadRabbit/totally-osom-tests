@@ -13,4 +13,4 @@
 
 require_relative '../tots' unless defined?(TOTS)
 
-TOTS::Runner.start
+at_exit { TOTS::Runner.start }

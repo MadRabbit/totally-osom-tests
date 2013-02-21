@@ -1,7 +1,7 @@
 #
 # A simple CLI for the `tots` cmd
 #
-require_relative '../tots' unless defined?(TOTS)
+require_relative '../tots/autorun'
 
 args = []
 dirs = []
