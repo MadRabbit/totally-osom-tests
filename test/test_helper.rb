@@ -1,1 +1,1 @@
-require_relative '../lib/totally-osom-tests'
+require_relative '../lib/tots/autorun'

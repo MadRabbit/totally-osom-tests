@@ -8,11 +8,11 @@ class Printer::Dots < Printer
     print paint(".", GREEN)
   end
 
-  def fail
+  def fail(e)
     print paint('F', RED)
   end
 
-  def error
+  def error(e)
     print paint('E', RED)
   end
 

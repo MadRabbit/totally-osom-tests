@@ -16,4 +16,3 @@ require_relative './tots/printer'
 require_relative './tots/printer/dots'
 require_relative './tots/runner'
 
-TOTS::Runner.start

@@ -61,12 +61,12 @@ class Printer
 
   def failed(e)
     @fail_count += 1
-    fail
+    fail(e)
   end
 
   def errored(e)
     @error_count += 1
-    error
+    error(e)
   end
 
   def finish
