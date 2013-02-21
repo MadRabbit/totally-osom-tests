@@ -37,4 +37,7 @@ class TOTS::Runner
     }
   end
 
+  def self.watch(paths)
+    throw "Not ready yet"
+  end
 end

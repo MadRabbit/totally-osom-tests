@@ -14,15 +14,19 @@ dirt.each do |arg|
     puts <<-EOF.gsub(/(\A|\n)\s+\|/, "\\1")
     |TOTS Runner Help:
     |
-    |  tots path[ path] [OPTSIONS]
+    |  tots path[ path ...] [OPTSIONS]
     |
     |
     |OPTIONS:
     |
     |  -h  --help      # show this help
+    |  -w  --watch     # watch for changes in specified files/dires
     |
     EOF
     exit
+
+  when '-w', '--watch'
+    args << '-w'
 
   else
     # assuming it's a dir
@@ -30,6 +34,7 @@ dirt.each do |arg|
   end
 end
 
+# figuring the paths
 dirs << 'test' if dirs.empty?
 
 dirs.map! do |name|
@@ -37,6 +42,7 @@ dirs.map! do |name|
   File.exists?(name) && File.directory?(name) ? "#{name}/**/*_test.rb" : name
 end
 
+# including the test files
 $LOAD_PATH << "#{Dir.pwd}/test/" if File.exists?('test') && File.directory?('test')
 
 require "test_helper" if File.exists?("test/test_helper.rb")
@@ -44,3 +50,6 @@ require "test_helper" if File.exists?("test/test_helper.rb")
 Dir[*dirs].each do |name|
   require "#{Dir.pwd}/#{name}"
 end
+
+# watching for the changes
+TOTS::Runner.watch(dirs) if args.include?('-w')
