@@ -36,28 +36,6 @@ class TOTS::Runner
 
     printer.finish
 
-    watch
-  end
-
-  def self.watch(paths=nil)
-    @paths = paths if paths
-
-    printer.watching(true) if !paths && @paths
-
-    if !paths && @paths && !@watching
-      @watching = true
-
-      require 'rb-fsevent'
-
-      fsevent = FSEvent.new
-      fsevent.watch Dir.pwd do |directories|
-        TOTS::Runner.printer.watching(false)
-
-        puts "Detected change inside: #{directories.inspect}\n"
-
-        TOTS::Runner.start
-      end
-      fsevent.run
-    end
+    TOTS::Watcher.check
   end
 end

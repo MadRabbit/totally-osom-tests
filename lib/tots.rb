@@ -15,5 +15,6 @@ require_relative './tots/matcher'
 require_relative './tots/matcher/awesome'
 require_relative './tots/printer'
 require_relative './tots/printer/dots'
+require_relative './tots/watcher'
 require_relative './tots/runner'
 

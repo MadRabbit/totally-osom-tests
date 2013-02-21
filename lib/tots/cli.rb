@@ -52,4 +52,4 @@ Dir[*dirs].each do |name|
 end
 
 # watching for the changes
-TOTS::Runner.watch(dirs) if args.include?('-w')
+TOTS::Watcher.watch(dirs) if args.include?('-w')
