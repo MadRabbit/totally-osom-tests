@@ -10,7 +10,20 @@ dirt = ARGV.dup
 
 dirt.each do |arg|
   case arg
-  when '-h'
+  when '-h', '--help'
+    puts <<-EOF.gsub(/(\A|\n)\s+\|/, "\\1")
+    |TOTS Runner Help:
+    |
+    |  tots path[ path] [OPTSIONS]
+    |
+    |
+    |OPTIONS:
+    |
+    |  -h  --help      # show this help
+    |
+    EOF
+    exit
+
   else
     # assuming it's a dir
     dirs << arg
