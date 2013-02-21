@@ -11,9 +11,11 @@ class TOTS::Runner
     @tests ||= []
   end
 
-  def self.start
-    printer = Printer::Dots.new
+  def self.printer
+    @printer ||= Printer::Dots.new
+  end
 
+  def self.start
     tests.each do |suite|
       printer.testing suite
 
