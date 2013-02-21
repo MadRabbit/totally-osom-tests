@@ -4,7 +4,7 @@
 require_relative '../tots' unless defined?(TOTS)
 
 args = []
-dirs = ['test']
+dirs = []
 
 dirt = ARGV.dup
 
@@ -17,9 +17,11 @@ dirt.each do |arg|
   end
 end
 
+dirs << 'test' if dirs.empty?
+
 dirs.map! do |name|
   name = name.slice(0, name.size - 1) if name[name.size-1] == '/'
-  File.directory?(name) ? "#{name}/**/*_test.rb" : name
+  File.exists?(name) && File.directory?(name) ? "#{name}/**/*_test.rb" : name
 end
 
 $LOAD_PATH << "#{Dir.pwd}/test/" if File.exists?('test') && File.directory?('test')
