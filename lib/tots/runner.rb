@@ -11,30 +11,26 @@ class TOTS::Runner
     @tests ||= []
   end
 
-  def self.printer
-    @printer ||= Printer::Dots.new
-  end
-
   def self.start
     tests.each do |suite|
-      printer.testing suite
+      TOTS::Printer.testing suite
 
       caze = suite.new
       suite.tests.each do |test|
-        printer.running test.name
+        TOTS::Printer.running test.name
 
         begin
           caze.run(test)
 
-          printer.passed
+          TOTS::Printer.passed
 
         rescue TOTS::Fail => e
-          printer.failed e
+          TOTS::Printer.failed e
         end
       end
     end
 
-    printer.finish
+    TOTS::Printer.finish
 
     TOTS::Watcher.check
   end

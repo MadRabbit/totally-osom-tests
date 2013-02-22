@@ -3,7 +3,7 @@
 #
 # Your good old dots printer
 #
-class Printer::Dots < Printer
+class TOTS::Printer::Dots < TOTS::Printer
   def pass
     print paint(".", GREEN)
   end
