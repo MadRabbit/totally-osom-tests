@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 #
 # Generic printer
 #
@@ -33,6 +35,10 @@ class Printer
   end
 
   def summary
+    raise "Should be implemented in a subclass"
+  end
+
+  def waiting
     raise "Should be implemented in a subclass"
   end
 
@@ -76,10 +82,10 @@ class Printer
   def watching(on)
     if on
       puts "\n"
-      puts "Watching..."
+      @waiting = Thread.new { waiting }
     else
+      @waiting.kill if @waiting
       puts "\n"
-
     end
   end
 end

@@ -27,4 +27,31 @@ class Printer::Dots < Printer
 
     print paint("#{@tests_count} Tests, #{@pass_count} Passed, #{@fail_count} Failed, #{@error_count} Errored\n", GREY)
   end
+
+  CYLON_SIZE = 10
+
+  def waiting
+    puts "\n\n"
+
+    i = 0
+
+    while true
+      inc =  1 if i == 0
+      inc = -1 if i > (CYLON_SIZE - 3)
+
+      dots = Array.new(CYLON_SIZE).map{ |i| ' ' }
+
+      dots[i]           = paint("■", RED)
+      dots[i - inc]     = paint("■", RED + ";2") if i > 0
+      dots[i - 2 * inc] = paint("∙", RED + ";2") if i < CYLON_SIZE - 2 && i > 1
+
+      puts "\u001b[2A\r" + paint('Watching ', GREY) + dots.join('') + "\n\n"
+
+      sleep 0.07
+
+      i += inc
+    end
+  end
 end
+
+
