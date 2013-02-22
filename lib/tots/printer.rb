@@ -12,8 +12,12 @@ class TOTS::Printer
   BLUE    = '6'
   GREY    = '7;2'
 
+  def self.set(name)
+    @klass = const_get(name[0].upcase + name.slice(1, name.size - 1))
+  end
+
   def self.method_missing(*args)
-    @inst ||= Dots.new
+    @inst ||= (@klass || Dots).new
 
     @inst.__send__(*args)
   end

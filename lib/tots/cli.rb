@@ -3,12 +3,12 @@
 #
 require_relative '../tots/autorun'
 
-args = []
+args = {}
 dirs = []
 
 dirt = ARGV.dup
 
-dirt.each do |arg|
+while arg = dirt.shift
   case arg
   when '-h', '--help'
     puts <<-EOF.gsub(/(\A|\n)\s+\|/, "\\1")
@@ -19,20 +19,27 @@ dirt.each do |arg|
     |
     |OPTIONS:
     |
-    |  -h  --help      # show this help
-    |  -w  --watch     # watch for changes in specified files/dires
+    |  -h      --help              # show this help
+    |  -w      --watch             # watch for changes in specified files/dires
+    |  -r name --reporter name     # specify the reporter
     |
     EOF
     exit
 
   when '-w', '--watch'
-    args << '-w'
+    args['-w'] = true
+
+  when '-r', '--reporter'
+    args['-r'] = dirt.shift
 
   else
     # assuming it's a dir
     dirs << arg
   end
 end
+
+# setting the reporter
+TOTS::Printer.set args['-r'] if args['-r']
 
 # figuring the paths
 dirs << 'test' if dirs.empty?
