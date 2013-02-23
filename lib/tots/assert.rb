@@ -3,6 +3,8 @@
 #
 class TOTS::Spec
   def assert(smth, msg="No message given")
+    TOTS::Printer.asserting(msg)
+
     unless smth
       raise TOTS::Fail, msg
     end

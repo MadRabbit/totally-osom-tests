@@ -23,11 +23,12 @@ class TOTS::Printer
   end
 
   def initialize
-    @suites_count = 0
-    @tests_count  = 0
-    @pass_count   = 0
-    @fail_count   = 0
-    @error_count  = 0
+    @suites_count  = 0
+    @tests_count   = 0
+    @asserts_count = 0
+    @passed_count  = 0
+    @fails_count   = 0
+    @errors_count  = 0
 
     print "\n"
   end
@@ -45,7 +46,16 @@ class TOTS::Printer
   end
 
   def summary
-    raise "Should be implemented in a subclass"
+    {
+      :Asserts => @asserts_count,
+      :Tests   => @tests_count,
+      :Passed  => @passed_count,
+      :Failed  => @fails_count,
+      :Errored => @errors_count
+
+    }.map do |key, value|
+      "#{value} #{key}"
+    end.join(', ')
   end
 
   def waiting
@@ -70,18 +80,22 @@ class TOTS::Printer
     @tests_count += 1
   end
 
+  def asserting(msg)
+    @asserts_count += 1
+  end
+
   def passed
-    @pass_count += 1
+    @passed_count += 1
     pass
   end
 
   def failed(e)
-    @fail_count += 1
+    @fails_count += 1
     fail(e)
   end
 
   def errored(e)
-    @error_count += 1
+    @errors_count += 1
     error(e)
   end
 

@@ -19,13 +19,13 @@ class TOTS::Printer::Dots < TOTS::Printer
   def summary
     puts "\n\n"
 
-    if @fail_count == 0 && @error_count == 0
+    if @fails_count == 0 && @errors_count == 0
       print paint(" ✔ Osom! ", GREEN)
     else
       print paint(" ✖ Doh...", RED)
     end
 
-    print paint("#{@tests_count} Tests, #{@pass_count} Passed, #{@fail_count} Failed, #{@error_count} Errored\n", GREY)
+    puts paint(super, GREY)
   end
 
   CYLON_SIZE = 10
