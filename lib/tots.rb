@@ -7,10 +7,7 @@ module TOTS
   VERSION = '0.0.0'
 end
 
-require_relative './tots/fail'
-require_relative './tots/test'
-require_relative './tots/spec'
-require_relative './tots/assert'
+require_relative './tots/asserts'
 require_relative './tots/matcher'
 require_relative './tots/matcher/awesome'
 require_relative './tots/printer'
@@ -18,4 +15,6 @@ require_relative './tots/printer/dots'
 require_relative './tots/printer/emoji'
 require_relative './tots/watcher'
 require_relative './tots/runner'
+require_relative './tots/test'
+require_relative './tots/spec'
 

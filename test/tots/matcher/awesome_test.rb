@@ -9,7 +9,7 @@ describe TOTS::Matcher do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail){ 22.must == 33 }
+        assert_fails { 22.must == 33 }
       end
     end
 
@@ -19,7 +19,7 @@ describe TOTS::Matcher do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail) { 22.must != 22 }
+        assert_fails { 22.must != 22 }
       end
     end
 
@@ -29,7 +29,7 @@ describe TOTS::Matcher do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail) { '22'.must =~ /3/ }
+        assert_fails { '22'.must =~ /3/ }
       end
     end
   end

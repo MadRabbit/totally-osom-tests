@@ -24,10 +24,10 @@ class TOTS::Runner
 
           TOTS::Printer.passed
 
-        rescue TOTS::Skip => e
+        rescue TOTS::Test::Skip => e
           TOTS::Printer.skipped
 
-        rescue TOTS::Fail => e
+        rescue TOTS::Test::Fail => e
           TOTS::Printer.failed(e)
         end
       end

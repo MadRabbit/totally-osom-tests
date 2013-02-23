@@ -9,7 +9,7 @@ describe TOTS::Spec do
       end
 
       it "must fail with false" do
-        assert_raises(TOTS::Fail) { assert(false) }
+        assert_fails { assert(false) }
       end
     end
 
@@ -19,7 +19,7 @@ describe TOTS::Spec do
       end
 
       it "must fail with different data" do
-        assert_raises(TOTS::Fail) { assert_equal(1,2) }
+        assert_fails { assert_equal(1,2) }
       end
     end
 
@@ -29,11 +29,11 @@ describe TOTS::Spec do
       end
 
       it "must fail with a non-empty objects" do
-        assert_raises(TOTS::Fail) { assert_empty(' ') }
+        assert_fails { assert_empty(' ') }
       end
 
       it "must fail with objects without the :empty? method" do
-        assert_raises(TOTS::Fail) { assert_empty(nil) }
+        assert_fails { assert_empty(nil) }
       end
     end
 
@@ -43,7 +43,7 @@ describe TOTS::Spec do
       end
 
       it "must fail when method is missing" do
-        assert_raises(TOTS::Fail) { assert_respond_to('', :non_existing_method) }
+        assert_fails { assert_respond_to('', :non_existing_method) }
       end
     end
 
@@ -53,9 +53,9 @@ describe TOTS::Spec do
       end
 
       it "must fail with non nils" do
-        assert_raises(TOTS::Fail) { assert_nil(false) }
-        assert_raises(TOTS::Fail) { assert_nil('') }
-        assert_raises(TOTS::Fail) { assert_nil(0) }
+        assert_fails { assert_nil(false) }
+        assert_fails { assert_nil('') }
+        assert_fails { assert_nil(0) }
       end
     end
 
@@ -65,8 +65,8 @@ describe TOTS::Spec do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail) { assert_includes([1,2,3], 4) }
-        assert_raises(TOTS::Fail) { assert_includes(nil, 4) }
+        assert_fails { assert_includes([1,2,3], 4) }
+        assert_fails { assert_includes(nil, 4) }
       end
     end
 
@@ -76,8 +76,8 @@ describe TOTS::Spec do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail) { assert_match("22", /3/) }
-        assert_raises(TOTS::Fail) { assert_match("22", nil) }
+        assert_fails { assert_match("22", /3/) }
+        assert_fails { assert_match("22", nil) }
       end
     end
 
@@ -87,7 +87,7 @@ describe TOTS::Spec do
       end
 
       it "must fail correctly" do
-        assert_raises(TOTS::Fail) { assert_instance_of('', Integer) }
+        assert_fails { assert_instance_of('', Integer) }
       end
     end
 
@@ -97,14 +97,14 @@ describe TOTS::Spec do
       end
 
       it "must fail when nothing raised" do
-        assert_raises TOTS::Fail do
+        assert_fails do
           assert_raises(Exception) { }
         end
       end
 
       it "must fail when raised a different type of exception" do
-        assert_raises TOTS::Fail do
-          assert_raises(TOTS::Fail) { raise Exception }
+        assert_fails do
+          assert_raises(ArgumentError) { raise Exception }
         end
       end
     end

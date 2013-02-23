@@ -4,6 +4,7 @@
 # Copyright (C) 2013 Nikolay Nemshilov
 #
 class TOTS::Spec
+  include TOTS::Asserts
 
   # the tests stash
   def self.tests

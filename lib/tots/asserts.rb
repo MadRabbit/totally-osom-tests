@@ -1,12 +1,12 @@
 #
 # The standard assertions
 #
-class TOTS::Spec
+module TOTS::Asserts
   def assert(smth, msg="No message given")
     TOTS::Printer.asserting(msg)
 
     unless smth
-      raise TOTS::Fail, msg
+      raise TOTS::Test::Fail, msg
     end
   end
 

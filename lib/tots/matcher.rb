@@ -2,6 +2,8 @@
 # The `must` thingy
 #
 class TOTS::Matcher
+  include TOTS::Asserts
+
   def initialize(object, *args)
     @object = object
   end

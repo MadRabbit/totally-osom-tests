@@ -4,6 +4,9 @@
 class TOTS::Test
   attr_accessor :name, :options, :block
 
+  class Skip < Exception; end
+  class Fail < Exception; end
+
   def initialize(args)
     @block   = args.last.is_a?(Proc) ? args.pop : skip
     @options = args.size > 1 && args.last.is_a?(Hash) ? args.pop : {}
@@ -12,7 +15,7 @@ class TOTS::Test
 
   def skip
     @block = Proc.new do
-      raise TOTS::Skip
+      raise Skip
     end
   end
 
@@ -25,5 +28,4 @@ class TOTS::Test
     end
   end
 
-  class ::TOTS::Skip < Exception; end
 end
