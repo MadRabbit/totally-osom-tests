@@ -20,11 +20,11 @@ class TOTS::Spec
   # end
   # ```
   #
-  def self.it(*args)
+  def self.it(*args,&block)
     if args.size == 0
       self
     else
-      tests << TOTS::Test.new(args)
+      tests << TOTS::Test.new(args + [block])
     end
   end
 

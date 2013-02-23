@@ -20,9 +20,9 @@ class TOTS::Printer::Dots < TOTS::Printer
     puts "\n\n"
 
     if @fails_count == 0 && @errors_count == 0
-      print paint(" ✔ Osom! ", GREEN)
+      print paint("✔ Osom! ", GREEN)
     else
-      print paint(" ✖ Doh...", RED)
+      print paint("✖ Doh... ", RED)
     end
 
     puts paint(super, GREY)
