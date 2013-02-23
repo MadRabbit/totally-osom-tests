@@ -1,12 +1,9 @@
 require 'test_helper'
 
 describe TOTS::Spec do
-  def skip # replacing the current skip
-    @__skip_called
-  end
 
   it.skip "must be skipped" do
-    assert @__skip_called
+    assert false, "this block should not be called"
   end
 
   it "must allow to specify options", some: 'options' do

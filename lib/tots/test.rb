@@ -11,7 +11,9 @@ class TOTS::Test
   end
 
   def skip
-    @block = Proc.new{}
+    @block = Proc.new do
+      raise TOTS::Skip
+    end
   end
 
   def run(context)
@@ -22,4 +24,6 @@ class TOTS::Test
       instance_eval &test.block
     end
   end
+
+  class ::TOTS::Skip < Exception; end
 end

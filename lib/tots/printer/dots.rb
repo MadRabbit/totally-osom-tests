@@ -8,6 +8,10 @@ class TOTS::Printer::Dots < TOTS::Printer
     print paint(".", GREEN)
   end
 
+  def skip
+    print paint('S', YELLOW)
+  end
+
   def fail(e)
     print paint('F', RED)
   end

@@ -29,11 +29,16 @@ class TOTS::Printer
     @passed_count  = 0
     @fails_count   = 0
     @errors_count  = 0
+    @skipped_count = 0
 
     print "\n"
   end
 
   def pass
+    raise "Should be implemented in a subclass"
+  end
+
+  def skip
     raise "Should be implemented in a subclass"
   end
 
@@ -51,7 +56,8 @@ class TOTS::Printer
       :Tests   => @tests_count,
       :Passed  => @passed_count,
       :Failed  => @fails_count,
-      :Errored => @errors_count
+      :Errored => @errors_count,
+      :Skipped => @skipped_count
 
     }.map do |key, value|
       "#{value} #{key}"
@@ -97,6 +103,11 @@ class TOTS::Printer
   def errored(e)
     @errors_count += 1
     error(e)
+  end
+
+  def skipped
+    @skipped_count += 1
+    skip
   end
 
   def finish
