@@ -11,21 +11,25 @@ class TOTS::Printer::Emoji < TOTS::Printer
     print GOOD[rand(GOOD.size)] + " "
   end
 
+  def skip
+    print '😴 '
+  end
+
   def fail(e)
-    print '😱 '
+    print '😡 '
   end
 
   def error(e)
-    print '💢 '
+    print '💥 '
   end
 
   def summary
     puts "\n\n"
 
     if @fail_count == 0 && @error_count == 0
-      print paint("😊  Osom! ", GREEN)
+      print paint("😊  Happy! ", GREEN)
     else
-      print paint("😱  Doh...", RED)
+      print paint("😱  Oh, no... ", RED)
     end
 
     puts paint(super, GREY)
