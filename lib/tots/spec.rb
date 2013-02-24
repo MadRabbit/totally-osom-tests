@@ -41,7 +41,7 @@ class TOTS::Spec
   # ```
   #
   def self.skip(*args, &block)
-    tests << TOTS::Test.new(args) # skipping the block
+    it *args # skipping the block
   end
 
   #
