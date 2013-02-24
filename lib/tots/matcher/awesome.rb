@@ -23,4 +23,20 @@ class TOTS::Matcher
   def =~(value)
     assert value =~ @object, "#{@object.inspect} doesn't match #{value.inspect}"
   end
+
+  def >(value)
+    assert @object > value, "#{@object.inspect} supposed to be > than #{value.inspect}"
+  end
+
+  def <(value)
+    assert @object < value, "#{@object.inspect} supposed to be < than #{value.inspect}"
+  end
+
+  def >=(value)
+    assert @object >= value, "#{@object.inspect} supposed to be >= than #{value.inspect}"
+  end
+
+  def <=(value)
+    assert @object <= value, "#{@object.inspect} supposed to be <= than #{value.inspect}"
+  end
 end
