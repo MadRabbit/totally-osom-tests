@@ -3,35 +3,16 @@
 #
 class TOTS::Runner
 
-  def self.<<(test)
-    tests << test
+  def self.<<(spec)
+    specs << spec
   end
 
-  def self.tests
-    @tests ||= []
+  def self.specs
+    @specs ||= []
   end
 
   def self.start
-    tests.each do |suite|
-      TOTS::Printer.testing suite
-
-      caze = suite.new
-      suite.tests.each do |test|
-        TOTS::Printer.running test.name
-
-        begin
-          caze.run(test)
-
-          TOTS::Printer.passed
-
-        rescue TOTS::Test::Skip => e
-          TOTS::Printer.skipped
-
-        rescue TOTS::Test::Fail => e
-          TOTS::Printer.failed(e)
-        end
-      end
-    end
+    specs.each(&:run)
 
     TOTS::Printer.finish
 

@@ -11,6 +11,24 @@ class TOTS::Spec
     @tests ||= []
   end
 
+  def self.specs
+    @specs ||= []
+  end
+
+  #
+  # Sub-describe blocks catcher
+  #
+  def self.describe(*args, &block)
+    specs << Class.new(TOTS::Spec, &block)
+  end
+
+  #
+  # alias for `describe`
+  #
+  def self.context(*args, &block)
+    describe(*args, &block)
+  end
+
   #
   # The basic `it` thingy
   #
@@ -45,10 +63,30 @@ class TOTS::Spec
   end
 
   #
-  # Runs the test (called from the runner)
+  # Runs the spec
   #
-  def run(test)
-    test.run(self)
+  def self.run
+    TOTS::Printer.testing self
+
+    suite = new
+
+    tests.each do |test|
+      TOTS::Printer.running test.name
+
+      begin
+        test.run(suite)
+
+        TOTS::Printer.passed
+
+      rescue TOTS::Test::Skip => e
+        TOTS::Printer.skipped
+
+      rescue TOTS::Test::Fail => e
+        TOTS::Printer.failed(e)
+      end
+    end
+
+    specs.each(&:run)
   end
 
 end

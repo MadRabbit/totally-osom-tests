@@ -9,4 +9,10 @@ describe TOTS::Spec do
   it "must allow to specify options", some: 'options' do
     assert_equal @test_options, some: 'options'
   end
+
+  context "sub-block" do
+    it "must be called too" do
+      assert true
+    end
+  end
 end
