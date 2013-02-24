@@ -26,7 +26,7 @@ class TOTS::Printer::Emoji < TOTS::Printer
   def summary
     puts "\n\n"
 
-    if @fail_count == 0 && @error_count == 0
+    if @fails_count == 0 && @errors_count == 0
       print paint("😊  Happy! ", GREEN)
     else
       print paint("😱  Oh, no... ", RED)
