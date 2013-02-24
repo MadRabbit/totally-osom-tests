@@ -7,6 +7,6 @@ describe TOTS::Spec do
   end
 
   it "must allow to specify options", some: 'options' do
-    assert_equal options, some: 'options'
+    assert_equal @test_options, some: 'options'
   end
 end

@@ -23,7 +23,7 @@ class TOTS::Test
     test = self
 
     context.instance_eval do
-      @options = test.options
+      @test_options = test.options
       instance_eval &test.block
     end
   end

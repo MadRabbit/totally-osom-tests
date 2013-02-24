@@ -45,21 +45,6 @@ class TOTS::Spec
   end
 
   #
-  # The extra options access
-  #
-  # ```ruby
-  # describe Somthing do
-  #   it "something", some: 'options' do
-  #     assert_equal options, some: 'options'
-  #   end
-  # end
-  # ```
-  #
-  def options
-    @options || {}
-  end
-
-  #
   # Runs the test (called from the runner)
   #
   def run(test)
