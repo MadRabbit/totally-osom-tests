@@ -35,8 +35,6 @@ class TOTS::Reporter::Emoji < TOTS::Reporter
     puts paint(super, GREY)
   end
 
-  CYLON_SIZE = 10
-
   def waiting
     puts "\n\n"
 
