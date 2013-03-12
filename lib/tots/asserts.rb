@@ -3,7 +3,7 @@
 #
 module TOTS::Asserts
   def assert(smth, msg="No message given")
-    TOTS::Printer.asserting(msg)
+    TOTS::Reporter.asserting(msg)
 
     unless smth
       raise TOTS::Test::Fail, msg

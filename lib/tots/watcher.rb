@@ -10,7 +10,7 @@ class TOTS::Watcher
   def self.check
     return if ! @paths
 
-    TOTS::Printer.watching(true)
+    TOTS::Reporter.watching(true)
 
     setup; @watching = true if !@watching
   end
@@ -20,7 +20,7 @@ class TOTS::Watcher
 
     fsevent = FSEvent.new
     fsevent.watch Dir.pwd do |directories|
-      TOTS::Printer.watching(false)
+      TOTS::Reporter.watching(false)
 
       puts "Detected change inside: #{directories.inspect}\n"
 

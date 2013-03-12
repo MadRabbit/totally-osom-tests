@@ -66,23 +66,23 @@ class TOTS::Spec
   # Runs the spec
   #
   def self.run
-    TOTS::Printer.testing self
+    TOTS::Reporter.testing self
 
     suite = new
 
     tests.each do |test|
-      TOTS::Printer.running test.name
+      TOTS::Reporter.running test.name
 
       begin
         test.run(suite)
 
-        TOTS::Printer.passed
+        TOTS::Reporter.passed
 
       rescue TOTS::Test::Skip => e
-        TOTS::Printer.skipped
+        TOTS::Reporter.skipped
 
       rescue TOTS::Test::Fail => e
-        TOTS::Printer.failed(e)
+        TOTS::Reporter.failed(e)
       end
     end
 

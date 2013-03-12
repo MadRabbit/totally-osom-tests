@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 #
-# Your good old dots printer
+# Your good old dots reporter
 #
-class TOTS::Printer::Dots < TOTS::Printer
+class TOTS::Reporter::Dots < TOTS::Reporter
   def pass
     print paint(".", GREEN)
   end

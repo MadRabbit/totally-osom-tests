@@ -14,7 +14,7 @@ class TOTS::Runner
   def self.start
     specs.each(&:run)
 
-    TOTS::Printer.finish
+    TOTS::Reporter.finish
 
     TOTS::Watcher.check
   end

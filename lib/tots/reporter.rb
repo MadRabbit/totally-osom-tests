@@ -1,9 +1,7 @@
-# encoding: utf-8
-
 #
-# Generic printer
+# Generic reporter
 #
-class TOTS::Printer
+class TOTS::Reporter
   RED     = '1'
   GREEN   = '2'
   YELLOW  = '3'

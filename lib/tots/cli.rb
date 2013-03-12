@@ -39,7 +39,7 @@ while arg = dirt.shift
 end
 
 # setting the reporter
-TOTS::Printer.set args['-r'] if args['-r']
+TOTS::Reporter.set args['-r'] if args['-r']
 
 # figuring the paths
 dirs << 'test' if dirs.empty?

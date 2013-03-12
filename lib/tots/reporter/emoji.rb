@@ -1,9 +1,9 @@
 # encoding: utf-8
 
 #
-# Emoji printer
+# Emoji reporter
 #
-class TOTS::Printer::Emoji < TOTS::Printer
+class TOTS::Reporter::Emoji < TOTS::Reporter
   GOOD = %w(🌵 🌴 🌲 🌳 🌿 🍀 🎄)
   WAIT = %w(🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘)
 
