@@ -16,6 +16,7 @@ require_relative './tots/reporter/emoji'
 require_relative './tots/reporter/hater'
 require_relative './tots/watcher'
 require_relative './tots/runner'
+require_relative './tots/stats'
 require_relative './tots/test'
 require_relative './tots/spec'
 

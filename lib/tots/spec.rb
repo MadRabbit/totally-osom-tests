@@ -62,33 +62,6 @@ class TOTS::Spec
     it *args # skipping the block
   end
 
-  #
-  # Runs the spec
-  #
-  def self.run
-    TOTS::Reporter.testing self
-
-    suite = new
-
-    tests.each do |test|
-      TOTS::Reporter.running test.name
-
-      begin
-        test.run(suite)
-
-        TOTS::Reporter.passed
-
-      rescue TOTS::Test::Skip => e
-        TOTS::Reporter.skipped
-
-      rescue TOTS::Test::Fail => e
-        TOTS::Reporter.failed(e)
-      end
-    end
-
-    specs.each(&:run)
-  end
-
 end
 
 #
