@@ -1,6 +1,6 @@
 # Totaly Osom Tests
 
-__NOTE__: This is purely an excersize in awesomeness. If you need testing framework
+__NOTE__: This is purely an excersize. If you need testing framework
 for a real-life project, please use rspec/test_case/whatever.
 
 ## The Goal
