@@ -3,8 +3,8 @@
 #
 # Copyright (C) 2013 Nikolay Nemshilov
 #
-class TOTS::Spec
-  include TOTS::Asserts
+class TOTES::Spec
+  include TOTES::Asserts
 
   # the tests stash
   def self.tests
@@ -19,7 +19,7 @@ class TOTS::Spec
   # Sub-describe blocks catcher
   #
   def self.describe(*args, &block)
-    specs << Class.new(TOTS::Spec, &block)
+    specs << Class.new(TOTES::Spec, &block)
   end
 
   #
@@ -43,7 +43,7 @@ class TOTS::Spec
     if args.size == 0
       self
     else
-      tests << TOTS::Test.new(args + [block])
+      tests << TOTES::Test.new(args + [block])
     end
   end
 
@@ -69,6 +69,6 @@ end
 #
 module Kernel
   def describe(*args, &block)
-    TOTS::Runner << Class.new(TOTS::Spec, &block)
+    TOTES::Runner << Class.new(TOTES::Spec, &block)
   end
 end

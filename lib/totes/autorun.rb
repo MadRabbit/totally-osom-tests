@@ -4,13 +4,13 @@
 # Add this into your tests to be able to run them as plain ruby
 #
 # ```ruby
-# require 'tots/autorun'
+# require 'TOTES/autorun'
 #
 # describe Stuff do
 # end
 # ```
 #
 
-require_relative '../tots' unless defined?(TOTS)
+require_relative '../TOTES' unless defined?(TOTES)
 
-at_exit { TOTS::Runner.start }
+at_exit { TOTES::Runner.start }

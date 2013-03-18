@@ -1,7 +1,7 @@
 #
-# A simple CLI for the `tots` cmd
+# A simple CLI for the `TOTES` cmd
 #
-require_relative '../tots/autorun'
+require_relative '../TOTES/autorun'
 
 args = {}
 dirs = []
@@ -12,9 +12,9 @@ while arg = dirt.shift
   case arg
   when '-h', '--help'
     puts <<-EOF.gsub(/(\A|\n)\s+\|/, "\\1")
-    |TOTS Runner Help:
+    |TOTES Runner Help:
     |
-    |  tots path[ path ...] [OPTSIONS]
+    |  TOTES path[ path ...] [OPTSIONS]
     |
     |
     |OPTIONS:
@@ -39,7 +39,7 @@ while arg = dirt.shift
 end
 
 # setting the reporter
-TOTS::Reporter.set args['-r'] if args['-r']
+TOTES::Reporter.set args['-r'] if args['-r']
 
 # figuring the paths
 dirs << 'test' if dirs.empty?
@@ -59,4 +59,4 @@ Dir[*dirs].each do |name|
 end
 
 # watching for the changes
-TOTS::Watcher.watch(dirs) if args.include?('-w')
+TOTES::Watcher.watch(dirs) if args.include?('-w')

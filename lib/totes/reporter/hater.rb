@@ -1,7 +1,7 @@
 #
 # Minimalistic black and white reporter
 #
-class TOTS::Reporter::Hater < TOTS::Reporter
+class TOTES::Reporter::Hater < TOTES::Reporter
 
   def pass
     print "."

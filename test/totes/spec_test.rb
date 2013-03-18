@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe TOTS::Spec do
+describe TOTES::Spec do
 
   it.skip "must be skipped" do
     assert false, "this block should not be called"

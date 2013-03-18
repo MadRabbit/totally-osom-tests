@@ -1,7 +1,7 @@
 #
 # The runner
 #
-class TOTS::Runner
+class TOTES::Runner
 
   def self.<<(spec)
     specs << spec
@@ -14,30 +14,30 @@ class TOTS::Runner
   def self.start
     run(specs)
 
-    TOTS::Reporter.finish
+    TOTES::Reporter.finish
 
-    TOTS::Watcher.check
+    TOTES::Watcher.check
   end
 
   def self.run(specs)
     specs.each do |spec|
-      TOTS::Reporter.testing spec
+      TOTES::Reporter.testing spec
 
       suite = spec.new
 
       spec.tests.each do |test|
-        TOTS::Reporter.running test.name
+        TOTES::Reporter.running test.name
 
         begin
           test.run(suite)
 
-          TOTS::Reporter.passed
+          TOTES::Reporter.passed
 
-        rescue TOTS::Test::Skip => e
-          TOTS::Reporter.skipped
+        rescue TOTES::Test::Skip => e
+          TOTES::Reporter.skipped
 
-        rescue TOTS::Test::Fail => e
-          TOTS::Reporter.failed(e)
+        rescue TOTES::Test::Fail => e
+          TOTES::Reporter.failed(e)
         end
       end
 

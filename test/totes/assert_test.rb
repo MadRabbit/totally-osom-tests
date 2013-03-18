@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe TOTS::Spec do
+describe TOTES::Spec do
 
   describe "standard assertions" do
     describe "assert" do

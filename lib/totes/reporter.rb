@@ -1,7 +1,7 @@
 #
 # Generic reporter
 #
-class TOTS::Reporter
+class TOTES::Reporter
   RED     = '1'
   GREEN   = '2'
   YELLOW  = '3'

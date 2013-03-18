@@ -1,7 +1,7 @@
 #
 # File changes watcher
 #
-class TOTS::Watcher
+class TOTES::Watcher
 
   def self.watch(paths)
     @paths = paths
@@ -10,7 +10,7 @@ class TOTS::Watcher
   def self.check
     return if ! @paths
 
-    TOTS::Reporter.watching(true)
+    TOTES::Reporter.watching(true)
 
     setup; @watching = true if !@watching
   end
@@ -20,11 +20,11 @@ class TOTS::Watcher
 
     fsevent = FSEvent.new
     fsevent.watch Dir.pwd do |directories|
-      TOTS::Reporter.watching(false)
+      TOTES::Reporter.watching(false)
 
       puts "Detected change inside: #{directories.inspect}\n"
 
-      TOTS::Runner.start
+      TOTES::Runner.start
     end
 
     fsevent.run

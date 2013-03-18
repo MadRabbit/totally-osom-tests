@@ -2,7 +2,7 @@
 # Awesome matchers handler
 #
 # ```ruby
-# describe TOTS::Matcher::Awesome do
+# describe TOTES::Matcher::Awesome do
 #   it "must provide awesome matchers" do
 #     22.must == 22
 #     22.must >  11
@@ -11,7 +11,7 @@
 # end
 # ```
 #
-class TOTS::Matcher
+class TOTES::Matcher
   def ==(value)
     assert @object == value, "#{@object.inspect} supposed to be equal #{value.inspect}"
   end

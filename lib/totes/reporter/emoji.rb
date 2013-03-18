@@ -3,7 +3,7 @@
 #
 # Emoji reporter
 #
-class TOTS::Reporter::Emoji < TOTS::Reporter
+class TOTES::Reporter::Emoji < TOTES::Reporter
   GOOD = %w(🌵 🌴 🌲 🌳 🌿 🍀 🎄)
   WAIT = %w(🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘)
 

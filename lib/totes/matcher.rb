@@ -1,8 +1,8 @@
 #
 # The `must` thingy
 #
-class TOTS::Matcher
-  include TOTS::Asserts
+class TOTES::Matcher
+  include TOTES::Asserts
 
   def initialize(object, *args)
     @object = object
@@ -11,6 +11,6 @@ end
 
 class Object
   def must(*args)
-    TOTS::Matcher.new(self)
+    TOTES::Matcher.new(self)
   end
 end

@@ -1,5 +1,5 @@
 #
 # This thing collects all sorts of stats on your code
 #
-class TOTS::Stats
+class TOTES::Stats
 end

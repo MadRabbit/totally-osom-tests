@@ -3,7 +3,7 @@
 #
 # Your good old dots reporter
 #
-class TOTS::Reporter::Dots < TOTS::Reporter
+class TOTES::Reporter::Dots < TOTES::Reporter
   def pass
     print paint(".", GREEN)
   end

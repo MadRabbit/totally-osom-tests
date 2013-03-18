@@ -1,12 +1,12 @@
 #
 # The standard assertions
 #
-module TOTS::Asserts
+module TOTES::Asserts
   def assert(smth, msg="No message given")
-    TOTS::Reporter.asserting(msg)
+    TOTES::Reporter.asserting(msg)
 
     unless smth
-      raise TOTS::Test::Fail, msg
+      raise TOTES::Test::Fail, msg
     end
   end
 

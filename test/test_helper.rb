@@ -1,9 +1,9 @@
-require_relative '../lib/tots/autorun'
+require_relative '../lib/TOTES/autorun'
 
-class TOTS::Spec
+class TOTES::Spec
 
   def assert_fails(&block)
-    assert_raises TOTS::Test::Fail do
+    assert_raises TOTES::Test::Fail do
       block.yield
     end
   end

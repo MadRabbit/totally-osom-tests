@@ -1,7 +1,7 @@
 #
 # A single test case entity
 #
-class TOTS::Test
+class TOTES::Test
   attr_accessor :name, :options, :block
 
   class Skip < Exception; end

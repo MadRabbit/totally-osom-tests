@@ -1,6 +1,6 @@
 require 'test_helper'
 
-describe TOTS::Matcher do
+describe TOTES::Matcher do
 
   describe "awesome matchers" do
     describe "==" do

@@ -3,4 +3,4 @@
 #
 # Copyright (C) 2013 Nikolay Nemshilov
 #
-require_relative './tots'
+require_relative './totes'
