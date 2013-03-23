@@ -6,14 +6,14 @@
 class TOTES::Spec
   include TOTES::Asserts
 
-  attr_accessor :subject, :parent, :block
+  attr_accessor :subject, :___proc
 
   #
   # Constructor
   #
   def initialize(subject, &block)
     @subject = subject
-    @block   = block
+    @___proc = block
   end
 
   #

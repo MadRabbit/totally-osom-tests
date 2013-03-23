@@ -42,7 +42,7 @@ class TOTES::Runner
     specs.each do |spec|
       TOTES::Reporter.testing spec
 
-      spec.instance_eval &spec.block
+      spec.instance_eval &spec.___proc
 
       (tests[spec] || []).each do |test|
         TOTES::Reporter.running test.name

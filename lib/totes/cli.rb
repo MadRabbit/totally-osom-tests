@@ -1,7 +1,7 @@
 #
 # A simple CLI for the `TOTES` cmd
 #
-require_relative '../TOTES/autorun'
+require_relative '../totes/autorun'
 
 args = {}
 dirs = []

@@ -1,4 +1,4 @@
-require_relative '../lib/TOTES/autorun'
+require_relative '../lib/totes/autorun'
 
 class TOTES::Spec
 
