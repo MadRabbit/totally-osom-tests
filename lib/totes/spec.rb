@@ -63,12 +63,3 @@ class TOTES::Spec
   end
 
 end
-
-#
-# the top-level describe
-#
-module Kernel
-  def describe(*args, &block)
-    TOTES::Runner << Class.new(TOTES::Spec, &block)
-  end
-end

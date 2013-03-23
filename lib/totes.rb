@@ -20,3 +20,11 @@ require_relative './totes/stats'
 require_relative './totes/test'
 require_relative './totes/spec'
 
+#
+# the top-level describe hook
+#
+module Kernel
+  def describe(*args, &block)
+    TOTES::Runner << Class.new(TOTES::Spec, &block)
+  end
+end
