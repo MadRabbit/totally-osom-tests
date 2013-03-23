@@ -3,16 +3,35 @@
 #
 class TOTES::Runner
 
-  def self.<<(spec)
-    specs << spec
+  def self.<<(item)
+    if item.is_a?(TOTES::Spec)
+      specs[context] ||= []
+      specs[context] << item
+      self.context = item
+    elsif item.is_a?(TOTES::Test)
+      tests[context] ||= []
+      tests[context] << item
+    end
+  end
+
+  def self.context
+    @context
+  end
+
+  def self.context=(context)
+    @context = context
   end
 
   def self.specs
-    @specs ||= []
+    @specs ||= {}
+  end
+
+  def self.tests
+    @tests ||= {}
   end
 
   def self.start
-    run(specs)
+    run(specs[nil])
 
     TOTES::Reporter.finish
 
@@ -23,13 +42,13 @@ class TOTES::Runner
     specs.each do |spec|
       TOTES::Reporter.testing spec
 
-      suite = spec.new
+      spec.instance_eval &spec.block
 
-      spec.tests.each do |test|
+      (tests[spec] || []).each do |test|
         TOTES::Reporter.running test.name
 
         begin
-          test.run(suite)
+          spec.instance_eval &test.proc
 
           TOTES::Reporter.passed
 
@@ -39,9 +58,11 @@ class TOTES::Runner
         rescue TOTES::Test::Fail => e
           TOTES::Reporter.failed(e)
         end
+
       end
 
-      run(spec.specs)
+      run self.specs[spec] || []
     end
   end
+
 end

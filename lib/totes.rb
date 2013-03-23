@@ -25,6 +25,7 @@ require_relative './totes/spec'
 #
 module Kernel
   def describe(*args, &block)
-    TOTES::Runner << Class.new(TOTES::Spec, &block)
+    TOTES::Runner.context = nil # placing next spec in the top level
+    TOTES::Runner << TOTES::Spec.new(*args, &block)
   end
 end

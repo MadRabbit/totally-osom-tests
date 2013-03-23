@@ -16,9 +16,10 @@ for a real-life project, please use rspec/test_case/whatever.
 Most of the parts in this thing are "inspired" by the following projects:
 
 1. [rspec](https://github.com/rspec/rspec)
-2. [minitest](https://github.com/seattlerb/minitest)
-3. [mocha](http://visionmedia.github.com/mocha)
-4. [vows](http://vowsjs.org)
+2. [shoulda](https://github.com/thoughtbot/shoulda)
+3. [minitest](https://github.com/seattlerb/minitest)
+4. [mocha](http://visionmedia.github.com/mocha)
+5. [vows](http://vowsjs.org)
 
 
 ## Copyright

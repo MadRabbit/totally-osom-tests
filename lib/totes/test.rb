@@ -19,13 +19,18 @@ class TOTES::Test
     end
   end
 
-  def run(context)
-    test = self
+  def proc
+    opts = @options
+    proc = @block
 
-    context.instance_eval do
-      @test_options = test.options
-      instance_eval &test.block
+    Proc.new do
+      @test_options = opts
+      instance_eval &proc
     end
+  end
+
+  def to_s
+    @name
   end
 
 end

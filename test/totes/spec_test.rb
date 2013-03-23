@@ -10,7 +10,7 @@ describe TOTES::Spec do
     assert_equal @test_options, some: 'options'
   end
 
-  context "sub-block" do
+  describe "sub-block" do
     it "must be called too" do
       assert true
     end

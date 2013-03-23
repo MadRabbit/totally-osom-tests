@@ -21,7 +21,7 @@ class TOTES::Reporter
   end
 
   def initialize
-    @suites_count  = 0
+    @specs_count   = 0
     @tests_count   = 0
     @asserts_count = 0
     @passed_count  = 0
@@ -50,9 +50,10 @@ class TOTES::Reporter
 
   def summary
     {
-      :Asserts => @asserts_count,
+      :Specs   => @specs_count,
       :Tests   => @tests_count,
       :Passed  => @passed_count,
+      :Asserts => @asserts_count,
       :Failed  => @fails_count,
       :Errored => @errors_count,
       :Skipped => @skipped_count
@@ -77,7 +78,7 @@ class TOTES::Reporter
   def testing(suite)
     @suite = suite
 
-    @suites_count += 1
+    @specs_count += 1
   end
 
   def running(test)

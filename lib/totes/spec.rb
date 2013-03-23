@@ -6,27 +6,21 @@
 class TOTES::Spec
   include TOTES::Asserts
 
-  # the tests stash
-  def self.tests
-    @tests ||= []
-  end
+  attr_accessor :subject, :parent, :block
 
-  def self.specs
-    @specs ||= []
+  #
+  # Constructor
+  #
+  def initialize(subject, &block)
+    @subject = subject
+    @block   = block
   end
 
   #
   # Sub-describe blocks catcher
   #
-  def self.describe(*args, &block)
-    specs << Class.new(TOTES::Spec, &block)
-  end
-
-  #
-  # alias for `describe`
-  #
-  def self.context(*args, &block)
-    describe(*args, &block)
+  def describe(subject, &block)
+    TOTES::Runner << self.class.new(subject, &block)
   end
 
   #
@@ -39,11 +33,11 @@ class TOTES::Spec
   # end
   # ```
   #
-  def self.it(*args,&block)
+  def it(*args,&block)
     if args.size == 0
-      self
+      self # for the future `.only`, `.skip`
     else
-      tests << TOTES::Test.new(args + [block])
+      TOTES::Runner << TOTES::Test.new(args + [block])
     end
   end
 
@@ -58,8 +52,11 @@ class TOTES::Spec
   # end
   # ```
   #
-  def self.skip(*args, &block)
+  def skip(*args, &block)
     it *args # skipping the block
   end
 
+  def to_s
+    @subject.to_s
+  end
 end
