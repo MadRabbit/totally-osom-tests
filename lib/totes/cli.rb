@@ -1,30 +1,42 @@
 #
 # A simple CLI for the `TOTES` cmd
 #
-require_relative '../totes/autorun'
 
 args = {}
 dirs = []
 
 dirt = ARGV.dup
 
+def cut_and_print(string)
+  print string.gsub(string[/\A(\n +)/], "\n").strip + "\n\n"
+  exit
+end
+
 while arg = dirt.shift
   case arg
   when '-h', '--help'
-    puts <<-EOF.gsub(/(\A|\n)\s+\|/, "\\1")
-    |TOTES Runner Help:
-    |
-    |  TOTES path[ path ...] [OPTSIONS]
-    |
-    |
-    |OPTIONS:
-    |
-    |  -h      --help              # show this help
-    |  -w      --watch             # watch for changes in specified files/dires
-    |  -r name --reporter name     # specify the reporter
-    |
-    EOF
-    exit
+    cut_and_print %Q{
+      TOTES Runner Help:
+
+        TOTES path[ path ...] [OPTSIONS]
+
+      OPTIONS:
+
+        -h      --help              # show this help
+        -w      --watch             # watch for changes in specified files/dires
+        -r name --reporter name     # specify the reporter
+        -rs     --reporters         # list known reporters
+    }
+
+  when '-rs', '--reporters'
+    cut_and_print %Q{
+      TOTES Known Reporters:
+
+        dots  - the standard dots reporter
+        spec  - BDD spec reporter
+        hater - the old style black and white reporter
+        emoji - just for kicks
+    }
 
   when '-w', '--watch'
     args['-w'] = true
@@ -37,6 +49,8 @@ while arg = dirt.shift
     dirs << arg
   end
 end
+
+require_relative '../totes/autorun'
 
 # setting the reporter
 TOTES::Reporter.set args['-r'] if args['-r']
