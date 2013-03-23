@@ -11,16 +11,41 @@ class TOTES::Spec
   #
   # Constructor
   #
-  def initialize(subject, &block)
+  def initialize(subject, context=nil, &block)
     @subject = subject
+    @context = context
     @___proc = block
   end
 
   #
-  # Sub-describe blocks catcher
+  # Sub-level description
   #
-  def describe(subject, &block)
-    TOTES::Runner << self.class.new(subject, &block)
+  # ```ruby
+  # describe Subject do
+  #   describe Subject.new do
+  #     it "must do stuff"
+  #   end
+  # end
+  # ```
+  #
+  def describe(subject, context=nil, &block)
+    TOTES::Runner << self.class.new(subject, context, &block)
+  end
+
+  #
+  # Context creator that doesn't change the subject
+  #
+  # ```ruby
+  # describe some_subject do
+  #   context "new context" do
+  #     it "must do stuff" do
+  #     end
+  #   end
+  # end
+  # ```
+  #
+  def context(context, &block)
+    describe @subject, context, &block
   end
 
   #
@@ -35,7 +60,7 @@ class TOTES::Spec
   #
   def it(*args,&block)
     if args.size == 0
-      self # for the future `.only`, `.skip`
+      self # for the chained `.only`, `.skip` calls
     else
       TOTES::Runner << TOTES::Test.new(args + [block])
     end
@@ -56,7 +81,10 @@ class TOTES::Spec
     it *args # skipping the block
   end
 
+  #
+  # Returns the name of the spec
+  #
   def to_s
-    @subject.to_s
+    "#{@subject}#{@context && ' :: ' + @context}"
   end
 end

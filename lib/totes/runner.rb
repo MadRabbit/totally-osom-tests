@@ -7,7 +7,6 @@ class TOTES::Runner
     if item.is_a?(TOTES::Spec)
       specs[context] ||= []
       specs[context] << item
-      self.context = item
     elsif item.is_a?(TOTES::Test)
       tests[context] ||= []
       tests[context] << item
@@ -40,12 +39,14 @@ class TOTES::Runner
 
   def self.run(specs)
     specs.each do |spec|
+      self.context = spec
+
       TOTES::Reporter.testing spec
 
       spec.instance_eval &spec.___proc
 
       (tests[spec] || []).each do |test|
-        TOTES::Reporter.running test.name
+        TOTES::Reporter.running test
 
         begin
           spec.instance_eval &test.proc
@@ -61,7 +62,7 @@ class TOTES::Runner
 
       end
 
-      run self.specs[spec] || []
+      run(self.specs[spec] || [])
     end
   end
 
