@@ -53,9 +53,9 @@ module TOTES::Runner
       specs.each do |spec|
         @context = spec
 
-        TOTES::Reporter.testing spec
-
         spec.instance_eval &spec.___proc
+
+        TOTES::Reporter.testing spec
 
         (tests[spec] || []).each do |test|
           TOTES::Reporter.running test

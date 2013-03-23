@@ -13,10 +13,12 @@ class TOTES::Reporter::Hater < TOTES::Reporter
 
   def fail(e)
     print 'F'
+    print "\n\n#{e}\n\n"
   end
 
   def error(e)
     print 'E'
+    print "\n\n#{e}\n\n"
   end
 
   def summary

@@ -14,10 +14,12 @@ class TOTES::Reporter::Dots < TOTES::Reporter
 
   def fail(e)
     print paint('F', RED)
+    print paint("\n\n#{e}\n\n", RED)
   end
 
   def error(e)
     print paint('E', RED)
+    print paint("\n\n#{e}\n\n", RED)
   end
 
   def summary

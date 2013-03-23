@@ -17,10 +17,12 @@ class TOTES::Reporter::Emoji < TOTES::Reporter
 
   def fail(e)
     print '😡 '
+    print paint("\n\n#{e}\n\n", RED)
   end
 
   def error(e)
     print '💥 '
+    print paint("\n\n#{e}\n\n", RED)
   end
 
   def summary

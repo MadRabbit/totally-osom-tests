@@ -77,11 +77,11 @@ class TOTES::Reporter
 
   def testing(suite)
     @suite = suite
-
     @specs_count += 1
   end
 
   def running(test)
+    @test = test
     @tests_count += 1
   end
 

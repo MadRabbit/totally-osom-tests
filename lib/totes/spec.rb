@@ -85,6 +85,10 @@ class TOTES::Spec
   # Returns the name of the spec
   #
   def to_s
-    "#{@subject}#{@context && ' :: ' + @context}"
+    (@context || @subject).to_s
+  end
+
+  def inspect
+    "#<TOTES::Spec @subject=#{@subject.inspect} @context=#{@context.inspect}>"
   end
 end
