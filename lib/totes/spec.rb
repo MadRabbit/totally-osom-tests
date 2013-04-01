@@ -58,27 +58,8 @@ class TOTES::Spec
   # end
   # ```
   #
-  def it(*args,&block)
-    if args.size == 0
-      self # for the chained `.only`, `.skip` calls
-    else
-      TOTES::Runner << TOTES::Test.new(args + [block])
-    end
-  end
-
-  #
-  # Quick, skip marking
-  #
-  # ```ruby
-  # describe Smth do
-  #   it.skip "this test" do
-  #     this_code.will_be(:skipped)
-  #   end
-  # end
-  # ```
-  #
-  def skip(*args, &block)
-    it *args # skipping the block
+  def it(*args, &block)
+    TOTES::Runner << TOTES::Test.new(args + [block])
   end
 
   #

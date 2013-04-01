@@ -8,15 +8,13 @@ class TOTES::Test
   class Fail < Exception; end
 
   def initialize(args)
-    @block   = args.last.is_a?(Proc) ? args.pop : skip
+    @block   = args.last.is_a?(Proc) ? args.pop : Proc.new{ raise Skip }
     @options = args.size > 1 && args.last.is_a?(Hash) ? args.pop : {}
     @name    = args[0] || 'no name given'
   end
 
-  def skip
-    @block = Proc.new do
-      raise Skip
-    end
+  def skip(*args, &block)
+    initialize(args)
   end
 
   def proc

@@ -11,6 +11,8 @@ module TOTES::Runner
         tests[context] ||= []
         tests[context] << item
       end
+
+      item # must return the item itself for chained calls
     end
 
     def context
