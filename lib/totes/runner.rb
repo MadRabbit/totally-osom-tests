@@ -83,6 +83,19 @@ module TOTES::Runner
 
         prepare(self.specs[spec] || [])
       end
+
+      only_tests = {}
+
+      tests.each do |spec, tests|
+        tests.each do |test|
+          if test.marked
+            only_tests[spec] ||= []
+            only_tests[spec] << test
+          end
+        end
+      end
+
+      @tests = only_tests if only_tests.size > 0
     end
   end
 end

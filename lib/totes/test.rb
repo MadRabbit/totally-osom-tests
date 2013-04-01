@@ -2,7 +2,7 @@
 # A single test case entity
 #
 class TOTES::Test
-  attr_accessor :name, :options, :block
+  attr_accessor :name, :options, :block, :marked
 
   class Skip < Exception; end
   class Fail < Exception; end
@@ -15,6 +15,11 @@ class TOTES::Test
 
   def skip(*args, &block)
     initialize(args)
+  end
+
+  def only(*args, &block)
+    initialize(args + [block])
+    @marked = true
   end
 
   def proc
