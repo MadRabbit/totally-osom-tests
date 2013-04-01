@@ -50,14 +50,12 @@ module TOTES::Runner
     end
 
     def run(specs)
-      specs.each do |spec|
-        @context = spec
+      prepare(specs)
 
-        spec.instance_eval &spec.___proc
-
+      tests.each do |spec, tests|
         TOTES::Reporter.testing spec
 
-        (tests[spec] || []).each do |test|
+        tests.each do |test|
           TOTES::Reporter.running test
 
           begin
@@ -71,10 +69,17 @@ module TOTES::Runner
           rescue TOTES::Test::Fail => e
             TOTES::Reporter.failed(e)
           end
-
         end
+      end
+    end
 
-        run(self.specs[spec] || [])
+    def prepare(specs)
+      specs.each do |spec|
+        @context = spec
+
+        spec.instance_eval &spec.___proc
+
+        prepare(self.specs[spec] || [])
       end
     end
   end
