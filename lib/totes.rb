@@ -7,6 +7,7 @@ module TOTES
   VERSION = '0.0.0'
 end
 
+require_relative './totes/config'
 require_relative './totes/asserts'
 require_relative './totes/matcher'
 require_relative './totes/matcher/awesome'
