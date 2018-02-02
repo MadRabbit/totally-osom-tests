@@ -18,7 +18,7 @@ Most of the parts in this thing are "inspired" by the following projects:
 1. [rspec](https://github.com/rspec/rspec)
 2. [shoulda](https://github.com/thoughtbot/shoulda)
 3. [minitest](https://github.com/seattlerb/minitest)
-4. [mocha](http://visionmedia.github.com/mocha)
+4. [mocha](http://mochajs.org/)
 5. [vows](http://vowsjs.org)
 
 
